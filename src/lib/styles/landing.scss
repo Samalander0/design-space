@@ -1,0 +1,67 @@
+@import './mixins.scss';
+
+section {
+  margin-top: 2rem;
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.75rem;
+  }
+}
+
+.card {
+  @include br-md;
+  padding: 1.75rem;
+  max-width: 20rem;
+  background: var(--bg-color);
+  display: block;
+  text-decoration: none;
+  color: inherit;
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .card-name {
+      display: flex;
+      align-items: center;
+      img {
+        margin-right: 0.25rem;
+      }
+      p {
+        margin: 0;
+      }
+    }
+    .card-arrow {
+      max-height: 1.25rem;
+      transition: 0.2s ease-out;
+    }
+  }
+  .card-content {
+    h3 {
+      font-weight: 500;
+      font-size: 1.25rem;
+      margin: 0.5em 0 0.5em 0;
+    }
+    p {
+      color: rgb(0 0 0 / 0.5);
+      margin: 0;
+    }
+  }
+
+  transition: 0.2s ease-out;
+
+  &:hover {
+    opacity: 0.8;
+    .card-arrow {
+      transform: translateX(0.25rem);
+    }
+  }
+}

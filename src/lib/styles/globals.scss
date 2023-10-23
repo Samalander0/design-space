@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import './mixins.scss';
+
+// Global styling
+body {
+  font-family: 'Inter', sans-serif;
+  padding: 0;
+  margin: 0;
+  color: #1F2937;
+}
+
+h1,h2,h3,h4 {
+  letter-spacing: -0.02em;
+  margin-top: 0.25em;
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+* {
+  box-sizing: border-box;
+  //border: 1px solid red;
+}
+
+// Variables
+$app-padding: 3rem;
+
+.app {
+  padding: $app-padding $app-padding $app-padding calc(20rem + calc($app-padding * 2));
+  min-height: 100vh;
+}
+
+// Navbar
+.main-nav {
+  @include br-lg;
+  position: fixed;
+  top: $app-padding;
+  left: $app-padding;
+  height: calc(100vh - calc($app-padding * 2));
+  width: 20rem;
+  margin: 0;
+  padding: 3rem;
+  background: #f2f3f7;
+
+  .nav-title {
+    display: flex;
+    align-items: center;
+
+    img {
+      max-height: 1.3rem;
+      margin-right: 0.5rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      margin-top: 0;
+    }
+  }
+
+  .nav-group {
+    h3 {
+      font-size: 1rem;
+    }
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .nav-item {
+    color: inherit;
+    text-decoration: none;
+
+    .item-header {
+      display: flex;
+      
+      img {
+        margin-right: 0.25rem;
+      }
+      p {
+        margin: 0;
+      }
+    }
+    .item-content {
+      p {
+        color: rgb(0 0 0 / 0.5);
+        margin: 0;
+      }
+    }
+
+    transition: 0.2s ease-out;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+// Main
+main {
+  height: calc(100vh - calc($app-padding * 2));
+  padding: 5rem 5rem 0 5rem;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 600;
+  }
+  p {
+    max-width: 60ch;
+    line-height: 1.5;
+  }
+}
+
+// Global Components
+.link-fancy {
+  text-decoration: none;
+  color: #4B5563;
+  background-image: linear-gradient(90deg, #0085ff 0%, #00ffe0 33.333%, #0085ff 66.666%, #00ffe0 100%);
+  background-size: 300% 1px;
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+
+  animation-name: slide-background;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-play-state: paused;
+
+  transition: 0.2s ease;
+
+  @keyframes slide-background {
+    from {background-position: 0 100%;}
+    to {background-position: 100% 100%;}
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
