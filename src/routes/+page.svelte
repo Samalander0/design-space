@@ -1,6 +1,6 @@
 <script>
   import '$lib/styles/landing.scss'
-  import Card from '$lib/components/landing-card.svelte'
+  import Card from '$lib/components/LandingCard.svelte'
 </script>
 
 <svelte:head>

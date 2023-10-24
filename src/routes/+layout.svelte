@@ -1,6 +1,6 @@
 <script>
   import '$lib/styles/globals.scss'
-  import NavItem from '../lib/components/nav-item.svelte';
+  import NavItem from '../lib/components/NavItem.svelte';
 </script>
 
 <div class="app">
