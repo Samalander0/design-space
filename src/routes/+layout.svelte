@@ -5,10 +5,10 @@
 
 <div class="app">
   <nav class="main-nav">
-    <div class="nav-title">
+    <a class="nav-title" href="/">
       <img src="/assets/logo.svg" alt="logo"/>
       <h2>Design Space</h2>
-    </div>
+    </a>
     <div class="nav-group">
       <h3>Empathize</h3>
       <NavItem

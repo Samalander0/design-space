@@ -1,0 +1,204 @@
+@import './mixins.scss';
+
+header {
+  .tool-name {
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-right: 0.3rem;
+      height: 1rem;
+    }
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin: 0;
+    }
+  }
+
+  h1 {
+    margin-top: 0;
+  }
+}
+
+.generator {
+  .input {
+    display: flex;
+    gap: 0.5rem;
+
+    .editor {
+      background: var(--bg-color);
+      padding: 1.5rem;
+      @include br-sm;
+      position: relative;
+
+      p {
+        margin: 0;
+      }
+      .editable {
+        background: var(--bg-dark);
+        padding: 0.025em 0.25em;
+        @include br-xs;
+        color: white;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .reload {
+        background: var(--bg-gradient);
+        width: 1.5rem;
+        height: 1.5rem;
+        position: absolute;
+        top: -0.5rem;
+        left: -0.5rem;
+        border: none;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+
+        img {
+          position: absolute;
+          top: 5px;
+          right: 3px;
+        }
+
+        transition: 0.3s ease;
+        background-position: center center;
+        background-size: 100%;
+
+        &:hover {
+          cursor: pointer;
+          background-size: 200%;
+          transform: scale(1.05);
+        }
+        &:active {
+          transform: scale(0.95);
+        }
+      }
+    }
+    .submit {
+      min-width: 4rem;
+      font: inherit;
+      @include br-sm;
+      border: none;
+      background-image: var(--bg-gradient);
+      color: white;
+      transition: 0.3s ease;
+      background-position: center center;
+      background-size: 100%;
+
+      &:hover {
+        cursor: pointer;
+        background-size: 200%;
+      }
+      &:active {
+        transform: scale(0.95);
+      }
+
+      img {
+        @keyframes rotate {
+          from {transform: rotate(0deg)}
+          to {transform: rotate(360deg)}
+        }
+
+        animation-name: rotate;
+        animation-duration: 1.25s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+    }
+  }
+
+  .output {
+    margin-top: 1.5rem;
+    h2 {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    small {
+      color: rgb(0 0 0 / 0.4);
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .output-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      .output-card {
+        @include br-sm;
+        background: var(--bg-light);
+        padding: 1.5rem;
+        max-width: 20rem;
+        position: relative;
+
+        opacity: 0;
+        @keyframes appear {
+          from {opacity: 0}
+          to {opacity: 1}
+        }
+        animation-name: appear;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-out;
+
+        .card-top {
+          display: flex;
+          justify-content: space-between;
+
+          p {
+            margin: 0;
+            font-size: 0.9rem;
+          }
+          .number {
+            color: rgb(0 0 0 / 0.4);
+          }
+        }
+        .card-text {
+          margin: 0.25em 0 0 0;
+        }
+        .copy {
+          background: var(--bg-gradient);
+          width: 1.5rem;
+          height: 1.5rem;
+          position: absolute;
+          bottom: 0.75rem;
+          right: 0.75rem;
+          border: none;
+          border-radius: 50%;
+          display: grid;
+          place-items: center;
+
+          opacity: 0;
+
+          img {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            height: 14px;
+            width: 14px;
+          }
+
+          transition: 0.3s ease;
+          background-position: center center;
+          background-size: 100%;
+
+          &:hover {
+            cursor: pointer;
+            background-size: 200%;
+            transform: scale(1.05);
+          }
+          &:active {
+            transform: scale(0.95);
+          }
+        }
+        &:hover .copy {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
