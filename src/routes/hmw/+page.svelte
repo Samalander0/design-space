@@ -3,35 +3,30 @@
   import OutputCard from '$lib/components/OutputCard.svelte';
 
   const userOptions = [
-    "science teacher",
-    "modern artist",
-    "zoologist",
-    "grocery store cashier",
-    "startup founder",
-    "social media influencer"
+    "Sam, a high school student who is taking a challenging history class",
+    "Jill, a marine biologist who works on habitat restoration",
+    "Avery, a chocolate factory worker who struggles to pay their bills",
   ]
-  const detailsOptions = [
-    "teaches virtual classes",
-    "wants to share their knowledge",
-    "is thinking about switching careers",
-    "has trouble commuting",
-    "wants to read more"
+  const needsOptions = [
+    "to remember information better",
+    "to walk their dog twice daily",
+    "to find a job",
   ]
-  const understandingOptions = [
-    "background",
-    "role",
-    "joys",
-    "challenges"
+  const becauseOptions = [
+    "they have always struggeled with a bad memory",
+    "their dog needs two walks every day",
+    "they want to earn more money"
   ]
 
   let user,
-      details,
-      understanding;
+      needs,
+      because;
 
   function setInputs() {
     user = userOptions[Math.floor(Math.random() * userOptions.length)]
-    details = detailsOptions[Math.floor(Math.random() * detailsOptions.length)]
-    understanding = understandingOptions[Math.floor(Math.random() * understandingOptions.length)]
+    let rand = Math.floor(Math.random() * needsOptions.length)
+    needs = needsOptions[rand]
+    because = becauseOptions[rand]
   }
   setInputs()
 
@@ -42,9 +37,9 @@
     generating = true
     outputs = null
 
-    let prompt = `a ${user} who ${details}. question topic: ${understanding}`
+    let prompt = `${user}, needs ${needs} because ${because}`
 
-    const res = await fetch(`./api/interview/?prompt=${prompt}`)
+    const res = await fetch(`./api/hmw/?prompt=${prompt}`)
     outputs = await res.json()
 
     generating = false
@@ -52,23 +47,23 @@
 </script>
 
 <svelte:head>
-  <title>Interview Question Generator - Design Space</title>
+  <title>HMW Question Generator - Design Space</title>
 </svelte:head>
 
 <header>
   <div class="tool-name">
     <img src="assets/shape-interview.svg" alt="shape"/>
-    <h2>Interview</h2>
+    <h2>HMW</h2>
   </div>
-  <h1>Interview Question Generator</h1>
-  <p>This tool will help you generate interview questions to get to know your end user. When interviewing, remember to ask follow-up questions.</p>
+  <h1>HMW Question Generator</h1>
+  <p>This tool will help you generate how might we questions. Also, note that the input for this tool is a user need statement.</p>
 </header>
 
 <div class="generator" style="--bg-color: #E0E6FF; --bg-light: #E5F6FF; --bg-dark: #ADABFF; --bg-gradient: linear-gradient(-30deg, #5585FF 0%, #CB37FF 100%);">
   <div class="input">
     <div class="editor">
       <p>
-        Interview questions for a <span contenteditable class="editable" bind:innerText={user}></span> who <span contenteditable class="editable" bind:innerText={details}></span> to better understand their <span contenteditable class="editable" bind:innerText={understanding}></span>
+        How might we help <span contenteditable class="editable" bind:innerText={user}></span>, who needs <span contenteditable class="editable" bind:innerText={needs}></span> because <span contenteditable class="editable" bind:innerText={because}></span>
       </p>
       <button class="reload" on:click={setInputs}>
         <img src="assets/reload.svg" alt="refresh"/>
@@ -85,7 +80,7 @@
 
   <div class="output">
     {#if outputs}
-      <h2>Outputs</h2>
+      <h2>HMW Question</h2>
       <small>(generated with AI, so there may be some inaccuracies)</small>
       <div class="output-cards">
         {#each outputs as output, index}

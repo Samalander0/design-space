@@ -108,6 +108,10 @@ header {
         animation-iteration-count: infinite;
         animation-timing-function: linear;
       }
+
+      &.solo-button {
+        padding: 0.5rem 2rem;
+      }
     }
   }
 

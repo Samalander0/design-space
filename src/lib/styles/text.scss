@@ -1,0 +1,21 @@
+.subtitle {
+  font-size: 1.25rem;
+  color: rgb(0 0 0 / 0.5);
+}
+.content {
+  p {
+    max-width: 70ch !important;
+    font-size: 1.1rem;
+    line-height: 1.6 !important;
+  }
+  strong {
+    font-weight: 600;
+  }
+  h2 {
+    font-size: 1.75rem;
+    margin-top: 2rem;
+  }
+  img {
+    margin: 1em auto;
+  }
+}
