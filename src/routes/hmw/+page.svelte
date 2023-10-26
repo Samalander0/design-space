@@ -63,7 +63,7 @@
   <div class="input">
     <div class="editor">
       <p>
-        How might we help <span contenteditable class="editable" bind:innerText={user}></span>, who needs <span contenteditable class="editable" bind:innerText={needs}></span> because <span contenteditable class="editable" bind:innerText={because}></span>
+        How might we help <span contenteditable class="editable" bind:innerText={user}></span> and needs <span contenteditable class="editable" bind:innerText={needs}></span> because <span contenteditable class="editable" bind:innerText={because}></span>
       </p>
       <button class="reload" on:click={setInputs}>
         <img src="assets/reload.svg" alt="refresh"/>
