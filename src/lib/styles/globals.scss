@@ -21,6 +21,11 @@ h1,h2,h3,h4 {
   //border: 1px solid red;
 }
 
+::selection {
+  color: white;
+  background: #8566ff;
+}
+
 // Variables
 $app-padding: 3rem;
 

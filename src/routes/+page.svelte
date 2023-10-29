@@ -59,3 +59,21 @@
     />
   </div>
 </section>
+
+<section style="--bg-color: #E0E6FF">
+  <h2>Ideate</h2>
+  <div class="cards">
+    <Card 
+      icon="assets/shape-read.svg" 
+      name="Ideation"
+      title="How to come up with ideas"
+      description="Learn about different ideation methods and ways to come up with unique, creative, and novel ideas"
+    />
+    <Card 
+      icon="assets/shape-feedback.svg" 
+      name="Feedback"
+      title="Idea feedback generator"
+      description="Get feedback on your ideas including ethical implications, constructive criticism, and implementation tips"
+    />
+  </div>
+</section>

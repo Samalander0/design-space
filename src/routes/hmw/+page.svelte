@@ -3,19 +3,25 @@
   import OutputCard from '$lib/components/OutputCard.svelte';
 
   const userOptions = [
-    "Sam, a high school student who is taking a challenging history class",
-    "Jill, a marine biologist who works on habitat restoration",
-    "Avery, a chocolate factory worker who struggles to pay their bills",
+    "Jordan, a young adult who wants to save money for his future",
+    "Naomi, a frequent traveler who loves exploring new places",
+    "Marcus, a resturaunt manager who wants a more rewarding job",
+    "Alex, a college student who is studying abroad in France",
+    "John, a stay-at-home dad who has two young children"
   ]
   const needsOptions = [
-    "to remember information better",
-    "to walk their dog twice daily",
-    "to find a job",
+    "reliably manage his finances",
+    "learn about local businesses while traveling",
+    "find a new job without leaving his employees behind",
+    "a way to connect with other international students and learn about the local culture",
+    "a way to find and schedule activities for his family"
   ]
   const becauseOptions = [
-    "they have always struggeled with a bad memory",
-    "their dog needs two walks every day",
-    "they want to earn more money"
+    "he often spends more than he earns and has no long term financial plans",
+    "she wants to immerse herself in the local culture and avoid tourist traps",
+    "his employees aren't trained to take on most of his daily tasks",
+    "he is feeling lonely and isolated and wants to make friends",
+    "he is constantly running errands and doesn't have time to plan anything fun"
   ]
 
   let user,
@@ -23,8 +29,8 @@
       because;
 
   function setInputs() {
-    user = userOptions[Math.floor(Math.random() * userOptions.length)]
     let rand = Math.floor(Math.random() * needsOptions.length)
+    user = userOptions[rand]
     needs = needsOptions[rand]
     because = becauseOptions[rand]
   }

@@ -43,6 +43,19 @@
         title="How Might We question generator"
       />
     </div>
+    <div class="nav-group">
+      <h3>Ideate</h3>
+      <NavItem
+        icon="assets/shape-read.svg"
+        name="Ideation"
+        title="How to come up with ideas"
+      />
+      <NavItem
+        icon="assets/shape-feedback.svg"
+        name="Feedback"
+        title="Idea feedback generator"
+      />
+    </div>
   </nav>
   <main>
     <slot />

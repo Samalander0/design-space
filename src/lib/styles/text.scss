@@ -3,9 +3,9 @@
   color: rgb(0 0 0 / 0.5);
 }
 .content {
-  p {
+  p, ul {
     max-width: 70ch !important;
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.6 !important;
   }
   strong {
@@ -17,5 +17,30 @@
   }
   img {
     margin: 1em auto;
+  }
+  a {
+    text-decoration: none;
+    color: #4B5563;
+    background-image: linear-gradient(90deg, #0085ff 0%, #00ffe0 33.333%, #0085ff 66.666%, #00ffe0 100%);
+    background-size: 300% 1px;
+    background-position: 100% 100%;
+    background-repeat: no-repeat;
+
+    animation-name: slide-background;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-play-state: paused;
+
+    transition: 0.2s ease;
+
+    @keyframes slide-background {
+      from {background-position: 0 100%;}
+      to {background-position: 100% 100%;}
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
