@@ -24,6 +24,10 @@ section {
   text-decoration: none;
   color: inherit;
 
+  @media (max-width: 700px) {
+    max-width: 100%;
+  }
+
   .card-top {
     display: flex;
     justify-content: space-between;

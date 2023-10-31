@@ -62,7 +62,7 @@
     <h2>HMW</h2>
   </div>
   <h1>HMW Question Generator</h1>
-  <p>This tool will help you generate how might we questions. Also, note that the input for this tool is a user need statement.</p>
+  <p>How Might We (HMW) questions are short questions that help you brainstorm and spark ideas. This tool will help you generate some HMW questions.</p>
 </header>
 
 <div class="generator" style="--bg-color: #E0E6FF; --bg-light: #E5F6FF; --bg-dark: #ADABFF; --bg-gradient: linear-gradient(-30deg, #5585FF 0%, #CB37FF 100%);">

@@ -26,25 +26,113 @@ h1,h2,h3,h4 {
   background: #8566ff;
 }
 
-// Variables
-$app-padding: 3rem;
-
 .app {
-  padding: $app-padding $app-padding $app-padding calc(20rem + calc($app-padding * 2));
+  --app-padding: 3rem;
+  @media (max-width: 800px) {
+    --app-padding: calc(4vw + 0.5rem);
+  }
+
+  padding: var(--app-padding) var(--app-padding) var(--app-padding) calc(20rem + calc(var(--app-padding) * 2));
   min-height: 100vh;
+
+  transition: padding 0.5s ease-in-out;
+  
+  @media (max-width: 1150px) {
+    padding: var(--app-padding);
+    padding-top: calc(var(--app-padding) + 2rem);
+
+    &:has(.main-nav.closed) {
+      padding: var(--app-padding);
+      padding-top: calc(var(--app-padding) + 2rem);
+      .nav-open {
+        transition-delay: 0.5s;
+      }
+      .nav-close {
+        opacity: 0;
+        pointer-events: none;
+        transition-delay: 0.5s;
+      }
+    }
+    &:has(.main-nav.open) {
+      .nav-open {
+        transform: scale(0);
+        opacity: 0;
+        pointer-events: none;
+        transition-delay: 0s;
+      }
+      .nav-close {
+        transition-delay: 0s;
+      }
+    }
+  }
 }
 
 // Navbar
 .main-nav {
   @include br-lg;
   position: fixed;
-  top: $app-padding;
-  left: $app-padding;
-  height: calc(100vh - calc($app-padding * 2));
+  top: var(--app-padding);
+  left: var(--app-padding);
+  height: calc(100vh - calc(var(--app-padding) * 2));
   width: 21rem;
   margin: 0;
   padding: 3rem;
   background: #f2f3f7;
+  z-index: 99999;
+
+  transition: 0.5s ease-in-out;
+
+  @media (max-width: 1150px) {
+    clip-path: circle(140% at calc(100% - 2rem) 2rem);
+    &.closed {
+      clip-path: circle(2rem at calc(100% - 2rem) 2rem);
+      overflow-y: hidden;
+    }
+  }
+
+  @media (max-width: 500px) {
+    inset: calc(var(--app-padding) * 2);
+    height: auto;
+    width: auto;
+  }
+
+  overflow-y: auto;
+
+  .nav-open {
+    position: fixed;
+    top: calc(var(--app-padding) * 2);
+    right: calc(var(--app-padding) * 2);
+    padding: 1.375rem;
+    height: 4rem;
+    border: none;
+    display: grid;
+    place-items: center;
+    background: #f2f3f7;
+
+    img {
+      width: 1.25rem;
+    }
+
+    @media (min-width: 1149px) {
+      display: none;
+    }
+  }
+  .nav-close {
+    position: fixed;
+    top: calc(calc(var(--app-padding) * 2) + 1.5rem);
+    right: calc(calc(var(--app-padding) * 2) + 1.5rem);
+    padding: 0;
+    border: none;
+    background: transparent;
+
+    img {
+      width: 1rem;
+    }
+
+    @media (min-width: 1149px) {
+      display: none;
+    }
+  }
 
   .nav-title {
     display: flex;
@@ -105,8 +193,11 @@ $app-padding: 3rem;
 
 // Main
 main {
-  min-height: calc(100vh - calc($app-padding * 2));
+  min-height: calc(100vh - calc(var(--app-padding) * 2));
   padding: 5rem;
+  @media (max-width: 800px) {
+    padding: var(--app-padding)
+  }
 
   h1 {
     font-size: 3rem;

@@ -43,7 +43,7 @@
     <h2>Feedback</h2>
   </div>
   <h1>Idea feedback generator</h1>
-  <p>This tool will help you generate interview questions to get to know your end user. When interviewing, remember to ask follow-up questions.</p>
+  <p>This tool will give feedback on your idea. When using this tool, make sure to describe your idea with as much information as you can, and remember to evaluate your idea beyond just using this tool.</p>
 </header>
 
 <div class="generator" style="--bg-color: #E0E6FF; --bg-light: #E5F6FF; --bg-dark: #ADABFF; --bg-gradient: linear-gradient(-30deg, #5585FF 0%, #CB37FF 100%);">

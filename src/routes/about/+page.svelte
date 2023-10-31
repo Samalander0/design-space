@@ -4,11 +4,8 @@
 
 <div class="content">
   <h1>What is Design Space?</h1>
-  <span class="subtitle">A walkthrough of what Design Space is and how it works [coming soon]</span>
+  <span class="subtitle">A walkthrough of what Design Space is and how it works [WIP/coming soon]</span>
   <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat 
-  cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Design Space is a library of tools and resources for design thinking. Design Space was originally created as a submission to the Congressional App Challenge, and more information and the video explaining the app will be posted when the competition concludes.
   </p>
 </div>

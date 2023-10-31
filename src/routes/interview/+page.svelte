@@ -61,7 +61,7 @@
     <h2>Interview</h2>
   </div>
   <h1>Interview Question Generator</h1>
-  <p>This tool will help you generate interview questions to get to know your end user. When interviewing, remember to ask follow-up questions.</p>
+  <p>Interviews are one of the most important things that you can do to understand and emphathize with your end user. This tool can help you generate starter interview questions. When interviewing, remember to ask follow-up questions.</p>
 </header>
 
 <div class="generator" style="--bg-color: #E0E6FF; --bg-light: #E5F6FF; --bg-dark: #ADABFF; --bg-gradient: linear-gradient(-30deg, #5585FF 0%, #CB37FF 100%);">

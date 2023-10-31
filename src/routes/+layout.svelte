@@ -1,10 +1,18 @@
 <script>
   import '$lib/styles/globals.scss'
   import NavItem from '../lib/components/NavItem.svelte';
+
+  let navOpen = false;
 </script>
 
 <div class="app">
-  <nav class="main-nav">
+  <nav class={navOpen ? "open main-nav" : "closed main-nav"}>
+    <button on:click={() => {navOpen = true}} class="nav-open">
+      <img src="assets/menu.svg" alt="menu"/>
+    </button>
+    <button on:click={() => {navOpen = false}} class="nav-close">
+      <img src="assets/close.svg" alt="menu"/>
+    </button>
     <a class="nav-title" href="/">
       <img src="/assets/logo.svg" alt="logo"/>
       <h2>Design Space</h2>

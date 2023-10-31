@@ -18,5 +18,9 @@
       <a target="_blank" href="https://www.ideou.com/pages/ideation-method-mash-up"><strong>Activity:</strong> Mash-Up Ideation Method</a>
       (IdeoU)
     </li>
+    <li>
+      <a target="_blank" href="https://www.ideou.com/pages/ideation-method-mash-up"><strong>Video:</strong> Creative thinking - how to get out of the box and generate ideas</a>
+      (TEDx)
+    </li>
   </ul>
 </div>
