@@ -1,40 +1,56 @@
-import { TextServiceClient } from "@google-ai/generativelanguage";
-import { GoogleAuth } from "google-auth-library";
+import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
 import { json } from '@sveltejs/kit';
 import { GOOGLE_API_KEY } from '$env/static/private'
 
-const MODEL_NAME = "models/text-bison-001";
+const MODEL_NAME = "gemini-pro";
+const API_KEY = GOOGLE_API_KEY;
 
-const client = new TextServiceClient({
-  authClient: new GoogleAuth().fromAPIKey(GOOGLE_API_KEY),
-});
+const safetySettings = [
+  {
+    category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+  },
+  {
+    category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+  },
+  {
+    category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+  },
+  {
+    category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+  },
+];
+
+const generationConfig = {
+  temperature: 0.7,
+  topK: 1,
+  topP: 1,
+  maxOutputTokens: 2048,
+};
 
 // Prompt
 function prompt(idea) {
-  const promptString = `I have an idea. I want you to give me feedback on the idea, constructive criticism, feedback on how novel it is (tell me if it already exists, and give specifics), tips on how to do it, and let me know of any ethical implications it might have (if any). Try to keep your response shorter and concise. Here is the idea: ${idea}`;
-  return(promptString)
+  const parts = [
+    {text: `I have an idea. I want you to give me feedback on the idea, constructive criticism, feedback on how novel it is (tell me if it already exists, and give specifics), tips on how to do it, and let me know of any ethical implications it might have (if any). Try to keep your response shorter and concise. Here is the idea: ${idea}`},
+  ];
+  return(parts)
 }
-const stopSequences = [];
 
 export async function GET({ url }) {
-  let generation = "";
-  let generationPrompt = prompt(url.searchParams.get('idea'))
+  const genAI = new GoogleGenerativeAI(API_KEY);
+  const model = genAI.getGenerativeModel({ model: MODEL_NAME });
+  let parts = prompt(url.searchParams.get('idea'))
   
-  generation = await client.generateText({
-    model: MODEL_NAME,
-    temperature: 0.7,
-    candidateCount: 1,
-    top_k: 40,
-    top_p: 0.95,
-    max_output_tokens: 10,
-    stop_sequences: stopSequences,
-    safety_settings: [{"category":"HARM_CATEGORY_DEROGATORY","threshold":1},{"category":"HARM_CATEGORY_TOXICITY","threshold":1},{"category":"HARM_CATEGORY_VIOLENCE","threshold":2},{"category":"HARM_CATEGORY_SEXUAL","threshold":2},{"category":"HARM_CATEGORY_MEDICAL","threshold":2},{"category":"HARM_CATEGORY_DANGEROUS","threshold":2}],
-    prompt: {
-      text: generationPrompt,
-    },
-  })
+  const result = await model.generateContent({
+    contents: [{ role: "user", parts }],
+    generationConfig,
+    safetySettings,
+  });
 
-  let response = generation[0].candidates[0].output
+  let response = result.response.text();
 
   return json(response)
 }
